@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo Invisível com Imagem de Play</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F0F0F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container principal do aplicativo */
+        .app-container {
+            width: 100%;
+            height: 700px;
+            background-color: blue;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: auto;
+        }
+
+        .app-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Barra lateral */
+        .sidebar {
+            position: absolute;
+            left: -200px;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            background-color: #333;
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .app-container:hover .sidebar {
+            left: 0;
+        }
+
+        /* Estilo para a caixa de vídeo com a imagem sobreposta */
+        .video-container {
+            position: relative;
+            width: 48%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        /* Imagem sobreposta */
+        .video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2; /* A imagem ficará acima do vídeo */
+        }
+
+        /* Ocultar o iframe do vídeo (invisível até o clique) */
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            visibility: hidden; /* Inicialmente invisível */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Estilo para a área de informações abaixo da imagem */
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .info h1 {
+            font-size: 24px;
+            color: #f0f0f0;
+            margin: 0;
+        }
+
+        .info p {
+            font-size: 16px;
+            color: #f0f0f0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra lateral -->
+<div class="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Sobre</a>
+    <a href="#">Serviços</a>
+    <a href="#">Contato</a>
+</div>
+
+<!-- Container principal do conteúdo -->
+<div class="app-container">
+    <!-- Informações adicionais -->
+    <div class="info">
+        <h1>Fala Fácil</h1>
+        <p>V.01</p>
+        <br />
+    </div>
+    
+    <!-- Caixa de vídeo com imagem sobreposta -->
+<div class="video-container" onclick="playVideo()">
+    <!-- Imagem sobre o vídeo (serve como botão de play) -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBqVIRH94_X0wQZ1W4WoLBzu7NA_66SsyhMvZhyphenhyphen1Clzog5Kp72i_egLFO5aWrQyl6yGxB7i770NjOJAO2dUacYEEtXqAfCxnCR_AypfR9sAartY9Lbfd5hyNrXTCkai-04oa3MuT9MpUNfPRX45kehqxhPhggUA_eihQzXLiIZa0k8qmqWSQzH7-VZQ3MS/s1600/1bca3ac1-e9a1-44d7-8be2-a106a19e7ad7.jpg" alt="Play Button">
+    <!-- Vídeo invisível -->
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/RxD-QXFWHBc?autoplay=1&mute=0&rel=0&modestbranding=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+    
+    <!-- Caixa de vídeo com imagem sobreposta -->
+<div class="video-container" onclick="playVideo()">
+    <!-- Imagem sobre o vídeo (serve como botão de play) -->
+    <img src="https://via.placeholder.com/500x200.jpg?text=Clique+para+reproduzir" alt="Play Button">
+    <!-- Vídeo invisível -->
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/RxD-QXFWHBc?autoplay=1&mute=0&rel=0&modestbranding=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<script>
+    function playVideo() {
+        document.getElementById('videoFrame').style.display = 'block';
+    }
+</script>
+
+    <!-- Caixa de vídeo com imagem sobreposta -->
+    <div class="video-container" onclick="playVideo()">
+        <!-- Imagem sobre o vídeo (serve como botão de play) -->
+        <img src="https://via.placeholder.com/500x200?text=Clique+para+reproduzir" alt="Play Button">
+        <!-- Vídeo invisível -->
+        <iframe id="videoFrame" src="https://www.youtube.com/embed/RxD-QXFWHBc?autoplay=1&mute=0&rel=0&modestbranding=1&controls=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+</div>
+
+<script>
+    function playVideo() {
+        var videoFrame = document.getElementById('videoFrame');
+        var videoImage = videoFrame.previousElementSibling; // A imagem sobre o vídeo
+
+        // Tornar o vídeo invisível, mas reproduzindo
+        videoFrame.style.visibility = "visible"; // Torna o vídeo invisível mas começa a reprodução
+        videoImage.style.visibility = "visible"; // Mantém a imagem visível
+
+        // Inicia o vídeo com os parâmetros de autoplay
+        videoFrame.src = videoFrame.src + "&autoplay=1&mute=0&rel=0&modestbranding=1&controls=0&showinfo=0";
+    }
+</script>
+
+</body>
+</html>
